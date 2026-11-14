@@ -67,6 +67,28 @@ input:focus{border-bottom-color:var(--red)}
 :root[data-theme=light] .lw{display:inline}
 .mono{letter-spacing:4px;font-weight:700;font-size:22px}
 button:focus-visible,input:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.info-fold{margin:12px 0;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,var(--tag));transition:border-color .25s,background .25s,transform .25s}
+.info-fold:hover{border-color:var(--brass)}
+.info-fold[open]{border-color:var(--brass);box-shadow:inset 3px 0 0 var(--brass)}
+.info-fold>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 17px;cursor:pointer;color:var(--fg);font:700 17px var(--st);letter-spacing:.02em;user-select:none}
+.info-fold>summary::-webkit-details-marker{display:none}
+.info-fold>summary:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.fold-mark{width:25px;height:25px;flex:0 0 25px;display:grid;place-items:center;border:1px solid var(--brass);border-radius:50%;color:var(--brass);font:400 19px var(--ty);transition:transform .35s cubic-bezier(.2,.8,.2,1),background .25s,color .25s}
+.info-fold[open] .fold-mark{transform:rotate(45deg);background:var(--tag);color:var(--ink)}
+.fold-body{padding:0 17px 17px;color:var(--mut);line-height:1.75}
+.fold-body>p:first-child{margin-top:0}
+.fold-body h3{color:var(--brass);font:700 13px var(--ty);letter-spacing:1.5px;text-transform:uppercase;margin:22px 0 6px}
+.fold-body a{color:var(--brass);text-underline-offset:3px}
+.fold-body .tiles{margin-top:12px}
+.info-fold[open] .fold-body{animation:foldIn .38s cubic-bezier(.2,.7,.2,1) both;transform-origin:top}
+@keyframes foldIn{from{opacity:0;transform:translateY(-8px);clip-path:inset(0 0 100%)}to{opacity:1;transform:translateY(0);clip-path:inset(0 0 0)}}
+.bottom-theme{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap;margin-top:28px;padding:10px 0 0;border-top:1px dashed var(--line);color:var(--mut);font:700 10px var(--ty);letter-spacing:1.5px;text-transform:uppercase}
+.bottom-theme-label{margin-right:3px}
+.theme-mini{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:transparent;color:var(--mut);padding:5px 7px;font:700 9px var(--ty);letter-spacing:.7px;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.theme-mini:hover{border-color:var(--brass);color:var(--fg);transform:translateY(-2px)}
+.theme-mini[aria-pressed=true]{border-color:var(--brass);background:var(--tag);color:var(--ink)}
+.theme-mini .theme-dot{width:8px;height:8px;flex-basis:8px}
+@media(max-width:560px){.info-fold>summary{font-size:15px;padding:13px}.fold-body{padding:0 13px 14px}.bottom-theme{justify-content:flex-start}}
 .footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--brass);margin-top:34px;padding-top:12px;color:var(--mut);font-size:12px;letter-spacing:1px;text-transform:uppercase}
 .footer span:last-child{color:var(--brass)}
 @media(max-width:560px){#app{padding:16px 14px 48px}.rack{grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:20px 12px}.t{height:112px}.big{padding:48px 20px 24px}.footer{font-size:10px}}
@@ -229,9 +251,9 @@ const fx={
 32:()=>console.log('%cThe clerk mutters: the word is pewter.','font:16px monospace'),
 35:s=>s.innerHTML='<p class="mir">buckle</p>'};
 const dk=()=>{const t=document.documentElement.dataset.theme;return t?t==='dark':matchMedia('(prefers-color-scheme:dark)').matches};
-const setTheme=theme=>{if(!['light','dark','sepia','signal'].includes(theme))return;document.documentElement.dataset.theme=theme;try{localStorage.setItem(THEME_KEY,theme)}catch(e){};document.querySelectorAll('.theme-choice').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===theme)))};
+const setTheme=theme=>{if(!['light','dark','sepia','signal'].includes(theme))return;document.documentElement.dataset.theme=theme;try{localStorage.setItem(THEME_KEY,theme)}catch(e){};document.querySelectorAll('.theme-choice,.theme-mini').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===theme)))};
 const themeBar=()=>`<div class="top" role="group" aria-label="Choose a colour theme"><span class="theme-label">Counter lighting</span><div class="theme-options"><button type="button" class="theme-choice" data-theme-choice="dark" aria-pressed="false"><i class="theme-dot" style="--dot:#14302a"></i>Night shift</button><button type="button" class="theme-choice" data-theme-choice="light" aria-pressed="false"><i class="theme-dot" style="--dot:#dfe5d4"></i>Day shift</button><button type="button" class="theme-choice" data-theme-choice="sepia" aria-pressed="false"><i class="theme-dot" style="--dot:#8b6845"></i>Archive</button><button type="button" class="theme-choice" data-theme-choice="signal" aria-pressed="false"><i class="theme-dot" style="--dot:#9f3935"></i>Signal room</button></div></div>`;
-document.addEventListener('click',e=>{const b=e.target.closest('.theme-choice');if(b)setTheme(b.dataset.themeChoice)});
+document.addEventListener('click',e=>{const b=e.target.closest('.theme-choice,.theme-mini');if(b)setTheme(b.dataset.themeChoice)});
 const clr=()=>{T.forEach(clearTimeout);T=[]};
 function home(){clr();const n=Object.keys(S.a).length,N=P.length;
 $('#app').innerHTML=`${themeBar()}<h1>${LT('LEFT',0)}<br>${LT('LUGGAGE',4)}</h1>
@@ -239,19 +261,19 @@ $('#app').innerHTML=`${themeBar()}<h1>${LT('LEFT',0)}<br>${LT('LUGGAGE',4)}</h1>
 <p class="cnt">${n} of ${N} bags claimed${n==N?'. The rack is empty. The clerk locks up and, for once, smiles.':''}</p>
 <div class="rack" id="rack">${P.map((_,i)=>`<button class="t${i in S.a?' d':''}" style="--r:${(i*37%7-3)*.9}deg;--i:${i}" data-i="${i}" aria-label="Bag ${i+1}${i in S.a?', claimed':''}"${i in S.a?` title='${BAGS[i]}'`:''}><b>${String(i+1).padStart(2,'0')}</b></button>`).join('')}</div>
 <section class="cta" aria-labelledby="cta-title"><h2 id="cta-title">Your claim is waiting.</h2><p>Forty-four tags. One peculiar office. Start with any bag and see where the clues lead.</p><a href="#rack" id="start-claiming">ENTER THE RACK</a></section>
-<section class="info" id="about"><h2>About the office</h2><p>Left Luggage is a self-contained browser puzzle experience inspired by an old railway lost-property counter. Explore 44 numbered bags, solve their clues and uncover the odd objects the clerk has kept on the shelves. It is a small independent web project, built to be played directly in your browser.</p></section>
-<section class="info" id="experience"><h2>What you can do here</h2><div class="tiles">
+<details class="info-fold" id="about"><summary><span class="fold-title">About the office</span><span class="fold-mark" aria-hidden="true">+</span></summary><div class="fold-body"><p>Left Luggage is a self-contained browser puzzle experience inspired by an old railway lost-property counter. Explore 44 numbered bags, solve their clues and uncover the odd objects the clerk has kept on the shelves. It is a small independent web project, built to be played directly in your browser.</p></div></details>
+<details class="info-fold" id="experience"><summary><span class="fold-title">What you can do here</span><span class="fold-mark" aria-hidden="true">+</span></summary><div class="fold-body"><div class="tiles">
 <div class="tile"><strong>44 bag puzzles</strong><p>Riddles, wordplay, hidden clues and little browser experiments.</p></div>
 <div class="tile"><strong>Clerk hints</strong><p>Ask for a nudge when a tag has you stumped.</p></div>
 <div class="tile"><strong>Four themes</strong><p>Choose Night Shift, Day Shift, Archive or Signal Room from the counter controls.</p></div>
 <div class="tile"><strong>Your own pace</strong><p>Progress is saved locally in this browser. No account required.</p></div>
-</div><p class="smallprint">There are no physical products for sale, paid plans, subscriptions or booking services on this site. The “showcase” is the free interactive experience itself.</p></section>
-<section class="info" id="proof"><h2>From the ledger</h2><div class="tiles">
+</div><p class="smallprint">There are no physical products for sale, paid plans, subscriptions or booking services on this site. The “showcase” is the free interactive experience itself.</p></div></details>
+<details class="info-fold" id="proof"><summary><span class="fold-title">From the ledger</span><span class="fold-mark" aria-hidden="true">+</span></summary><div class="fold-body"><div class="tiles">
 <div class="tile"><strong>44</strong><p>Numbered bags to investigate.</p></div>
 <div class="tile"><strong>0</strong><p>Accounts or sign-ups required.</p></div>
 <div class="tile"><strong>Local</strong><p>Claim progress stays in your browser storage.</p></div>
-</div><p class="smallprint">These are verifiable features of the project, not customer ratings or testimonials. We do not publish fabricated reviews, user counts or endorsements.</p></section>
-<section class="info" id="faq"><h2>Frequently asked questions</h2>
+</div><p class="smallprint">These are verifiable features of the project, not customer ratings or testimonials. We do not publish fabricated reviews, user counts or endorsements.</p></div></details>
+<details class="info-fold" id="faq"><summary><span class="fold-title">Frequently asked questions</span><span class="fold-mark" aria-hidden="true">+</span></summary><div class="fold-body">
 <details><summary>How do I play?</summary><p>Select any numbered bag on the rack, read its tag and enter the answer. Some puzzles require you to inspect the page or interact with your browser. Use “Ask the clerk” for a hint.</p></details>
 <details><summary>How many puzzles are there?</summary><p>There are 44 bags to claim.</p></details>
 <details><summary>Is it free?</summary><p>Yes. The experience is free to play and does not require an account or payment.</p></details>
@@ -259,30 +281,30 @@ $('#app').innerHTML=`${themeBar()}<h1>${LT('LEFT',0)}<br>${LT('LUGGAGE',4)}</h1>
 <details><summary>Can I reset my progress?</summary><p>Clear this site's local storage in your browser settings to reset claimed bags and saved preferences.</p></details>
 <details><summary>Does the site sell anything?</summary><p>No. There are no physical goods, subscriptions or paid services offered here.</p></details>
 <details><summary>Is the connection secure?</summary><p>The site is intended to be served over HTTPS using GitHub Pages. Use the HTTPS address shown below; if your browser does not show a secure connection, do not enter personal information.</p></details>
-</section>
-<section class="info" id="contact"><h2>Contact & project links</h2><p>Found a bug, spotted a broken clue or have feedback? The public project repository is the contact point for this site.</p><p><a href="https://github.com/DinoCodes-Potter/Left-Luggage/issues" target="_blank" rel="noopener noreferrer">Report an issue or send feedback on GitHub</a></p><p><a href="https://github.com/DinoCodes-Potter/Left-Luggage" target="_blank" rel="noopener noreferrer">View the source repository</a></p><p class="smallprint">No public email address or social-media account is currently listed for this project. We have not invented one.</p></section>
-<section class="info" id="privacy"><h2>Privacy policy</h2><p><strong>Last updated: 14 November 2026</strong></p>
+</div></details>
+<details class="info-fold" id="contact"><summary><span class="fold-title">Contact & project links</span><span class="fold-mark" aria-hidden="true">+</span></summary><div class="fold-body"><p>Found a bug, spotted a broken clue or have feedback? The public project repository is the contact point for this site.</p><p><a href="https://github.com/DinoCodes-Potter/Left-Luggage/issues" target="_blank" rel="noopener noreferrer">Report an issue or send feedback on GitHub</a></p><p><a href="https://github.com/DinoCodes-Potter/Left-Luggage" target="_blank" rel="noopener noreferrer">View the source repository</a></p><p class="smallprint">No public email address or social-media account is currently listed for this project. We have not invented one.</p></div></details>
+<details class="info-fold" id="privacy"><summary><span class="fold-title">Privacy policy</span><span class="fold-mark" aria-hidden="true">+</span></summary><div class="fold-body"><p><strong>Last updated: 14 November 2026</strong></p>
 <h3>Information this site stores</h3><p>Left Luggage stores puzzle answers/claimed-bag progress under the browser storage key <code>lug1</code> and the selected colour theme under <code>left-luggage-theme</code>. This information remains in your browser's local storage and is not sent to a Left Luggage application server.</p>
 <h3>Accounts and contact forms</h3><p>This site does not provide account registration, a newsletter or an on-site contact form. If you contact the project through GitHub, GitHub processes that interaction under its own privacy terms.</p>
 <h3>Third-party services</h3><p>The page loads typefaces from Google Fonts. Your browser may connect to Google's servers to retrieve those font files; Google's own policies govern that service. GitHub Pages hosts the website and may process standard hosting and security logs under GitHub's policies.</p>
 <h3>Your choices</h3><p>You can clear this site's local storage through your browser settings. This removes saved progress and theme preferences. You can also use browser controls or extensions to limit third-party requests, though the page may then use system fonts.</p>
 <h3>Children and sensitive information</h3><p>Do not enter personal, financial, health or other sensitive information into puzzle answers. The answer field is for puzzle responses only.</p>
-<h3>Policy changes</h3><p>If the site's data practices change, this policy should be updated before the change takes effect.</p></section>
-<section class="info" id="terms"><h2>Terms of use</h2><p><strong>Last updated: 14 November 2026</strong></p>
+<h3>Policy changes</h3><p>If the site's data practices change, this policy should be updated before the change takes effect.</p></div></details>
+<details class="info-fold" id="terms"><summary><span class="fold-title">Terms of use</span><span class="fold-mark" aria-hidden="true">+</span></summary><div class="fold-body"><p><strong>Last updated: 14 November 2026</strong></p>
 <h3>Using the experience</h3><p>You may access and play Left Luggage for personal, non-commercial entertainment. Please do not attempt to disrupt the site, abuse GitHub services or use the page to submit unlawful or harmful content.</p>
 <h3>Availability</h3><p>The experience is provided as-is. Features, puzzles and hosting may change, be interrupted or become unavailable. We do not promise uninterrupted access or permanent storage of progress.</p>
 <h3>Intellectual property</h3><p>Unless otherwise stated, the site's original puzzle text, visual design and code are part of the Left Luggage project. Do not republish the project as your own or imply endorsement by its creator.</p>
 <h3>External services</h3><p>Links to GitHub and Google Fonts lead to third-party services. Their terms and privacy policies apply when you use them.</p>
 <h3>Disclaimer</h3><p>The site is an entertainment project. It is not a professional, financial, legal or safety service. To the extent permitted by applicable law, the project is provided without warranties.</p>
-<h3>Changes</h3><p>These terms may be updated when the project changes. Continued use after an update means you are using the current version.</p></section>
+<h3>Changes</h3><p>These terms may be updated when the project changes. Continued use after an update means you are using the current version.</p></div></details>
 <nav class="page-links" aria-label="Site information"><a href="#about">About</a><a href="#experience">Explore</a><a href="#proof">Project facts</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#privacy">Privacy</a><a href="#terms">Terms</a><a href="sitemap.xml">XML sitemap</a><a href="https://github.com/DinoCodes-Potter/Left-Luggage">GitHub</a></nav>
-<footer class="footer"><span>Left Luggage · Lost Property Office</span><span>Est. before anyone could say</span></footer>`;
+<div class="bottom-theme" role="group" aria-label="Change colour theme"><span class="bottom-theme-label">Counter lights</span><button type="button" class="theme-mini" data-theme-choice="dark" aria-pressed="false"><i class="theme-dot" style="--dot:#14302a"></i>Night</button><button type="button" class="theme-mini" data-theme-choice="light" aria-pressed="false"><i class="theme-dot" style="--dot:#dfe5d4"></i>Day</button><button type="button" class="theme-mini" data-theme-choice="sepia" aria-pressed="false"><i class="theme-dot" style="--dot:#8b6845"></i>Archive</button><button type="button" class="theme-mini" data-theme-choice="signal" aria-pressed="false"><i class="theme-dot" style="--dot:#9f3935"></i>Signal</button></div><footer class="footer"><span>Left Luggage · Lost Property Office</span><span>Est. before anyone could say</span></footer>`;
 setTheme(document.documentElement.dataset.theme||(dk()?'dark':'light'));
 document.querySelectorAll('.t').forEach(b=>b.onclick=()=>open(+b.dataset.i))}
 function open(i){clr();const N=P.length,miss=(NEED[i]||[]).filter(k=>S.a[k]==null).map(k=>k+1);
 $('#app').innerHTML=`${themeBar()}<button class="lk" id="bk">Back to the rack</button><article class="big" id="tg"><div class="no" data-i="${i}">Bag ${i+1}</div><small class="own">${OW(i)}</small><div id="pr">${P[i]}</div><div id="st"></div>
 <form id="f"><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer" placeholder="write the word here"><button class="go" type="submit">Claim</button></form>
-<p class="ck" id="ck"></p></article><div class="nav"><button class="lk" id="pv">Previous bag</button><button class="lk" id="hn">Ask the clerk</button><button class="lk" id="nx">Next bag</button></div><footer class="footer"><span>Left Luggage · Lost Property Office</span><span>All claims are final</span></footer>`;
+<p class="ck" id="ck"></p></article><div class="nav"><button class="lk" id="pv">Previous bag</button><button class="lk" id="hn">Ask the clerk</button><button class="lk" id="nx">Next bag</button></div><div class="bottom-theme" role="group" aria-label="Change colour theme"><span class="bottom-theme-label">Counter lights</span><button type="button" class="theme-mini" data-theme-choice="dark" aria-pressed="false"><i class="theme-dot" style="--dot:#14302a"></i>Night</button><button type="button" class="theme-mini" data-theme-choice="light" aria-pressed="false"><i class="theme-dot" style="--dot:#dfe5d4"></i>Day</button><button type="button" class="theme-mini" data-theme-choice="sepia" aria-pressed="false"><i class="theme-dot" style="--dot:#8b6845"></i>Archive</button><button type="button" class="theme-mini" data-theme-choice="signal" aria-pressed="false"><i class="theme-dot" style="--dot:#9f3935"></i>Signal</button></div><footer class="footer"><span>Left Luggage · Lost Property Office</span><span>All claims are final</span></footer>`;
 setTheme(document.documentElement.dataset.theme||(dk()?'dark':'light'));
 const say=t=>{const c=$('#ck');c.textContent=t;c.style.animation='none';void c.offsetWidth;c.style.animation='fade .4s'},tg=$('#tg');
 const need=()=>miss.length?(say('Claim bag '+miss.join(', ')+' first, then come back.'),1):0;
