@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Left Luggage — The Unclaimed Bag Office</title>
+<meta name="description" content="Forty-four unclaimed bags. Forty-four curious tags. A peculiar little lost-property office full of riddles, secrets and things best left unexplained." />
+<meta name="theme-color" content="#14302a" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Left Luggage — The Unclaimed Bag Office" />
+<meta property="og:description" content="Forty-four unclaimed bags. Forty-four curious tags. Can you claim them all?" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Stardos+Stencil:wght@400;700&display=swap">
+<style>
+:root{--bg:#14302a;--fg:#efe6d0;--mut:#9fb3a5;--tag:#e8dbb5;--ink:#241f17;--brass:#d3a64a;--red:#c2342b;--line:#1c3d35;--st:"Stardos Stencil",Impact,"Arial Black",sans-serif;--ty:"Courier Prime","Courier New",monospace;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#dfe5d4;--fg:#1d2a22;--mut:#55675b;--tag:#f1e7c9;--brass:#8c6410;--red:#b3261e;--line:#cdd7c0}}
+:root[data-theme=light]{--bg:#dfe5d4;--fg:#1d2a22;--mut:#55675b;--tag:#f1e7c9;--brass:#8c6410;--red:#b3261e;--line:#cdd7c0}
+:root[data-theme=dark]{--bg:#14302a;--fg:#efe6d0;--mut:#9fb3a5;--tag:#e8dbb5;--brass:#d3a64a;--red:#c2342b;--line:#1c3d35}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;background:var(--bg) repeating-linear-gradient(90deg,transparent 0 58px,var(--line) 58px 60px);color:var(--fg);font:17px/1.55 var(--ty)}
+#app{max-width:880px;margin:0 auto;padding:22px 18px 70px}
+h1{font:400 clamp(46px,13vw,104px)/.95 var(--st);color:var(--brass);margin:26px 0 14px}
+.sub{max-width:52ch;margin:0 0 10px}.cnt{color:var(--mut);margin:0 0 28px}
+.top{display:flex;justify-content:flex-end}
+button{font:inherit;color:inherit;cursor:pointer}
+.lk{background:none;border:0;border-bottom:1px solid var(--brass);color:var(--fg);padding:4px 0;margin:0 16px 0 0}
+.rack{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:26px 14px}
+.t{position:relative;border:0;background:var(--tag);color:var(--ink);height:122px;padding-top:36px;clip-path:polygon(22% 0,78% 0,100% 20%,100% 100%,0 100%,0 20%);transform:rotate(var(--r));transition:transform .15s}
+.t::before,.big::before{content:"";position:absolute;top:10px;left:50%;width:13px;height:13px;margin-left:-6px;border-radius:50%;background:var(--bg);border:2px solid var(--brass)}
+.t:hover,.t:focus-visible{transform:rotate(0) translateY(-5px)}
+.t b{font:400 38px var(--st)}
+.t.d{opacity:.8}.t.d::after{content:"CLAIMED";position:absolute;left:50%;top:62px;transform:translateX(-50%) rotate(-14deg);color:var(--red);border:2px solid var(--red);font:700 11px var(--ty);padding:1px 4px;background:var(--tag)}
+.big{position:relative;background:var(--tag);color:var(--ink);padding:56px 28px 26px;margin:18px 0;clip-path:polygon(10% 0,90% 0,100% 6%,100% 100%,0 100%,0 6%)}
+.no{font:400 44px var(--st);margin-bottom:6px}
+#pr{font-size:19px;margin-bottom:14px}
+form{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+input{flex:1;min-width:150px;font:700 20px var(--ty);background:transparent;border:0;border-bottom:2px solid var(--ink);color:var(--ink);padding:6px 2px;outline:0}
+input:focus{border-bottom-color:var(--red)}
+.go{background:var(--ink);color:var(--tag);border:0;padding:8px 22px;font-weight:700}
+.ck{margin:14px 0 0;font-style:italic;min-height:1.6em}
+.ok::after{content:"CLAIMED";position:absolute;right:24px;top:46px;color:var(--red);border:4px solid var(--red);font:400 38px var(--st);padding:0 10px;transform:rotate(-12deg);animation:st .3s}
+@keyframes st{from{transform:rotate(-12deg) scale(2.4);opacity:0}}
+.sh{animation:sh .3s}@keyframes sh{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.nav{display:flex;flex-wrap:wrap;gap:8px 0}
+.str{height:10px;background:var(--red);border-radius:5px;margin:14px 0}
+.ink{color:var(--tag);font:700 30px var(--st);margin:6px 0}.ink::selection{background:var(--ink);color:var(--tag)}
+.note{background:var(--ink);color:var(--tag);padding:8px 12px;margin:12px 0}
+.bell{font-size:40px;background:none;border:0}
+.cap{font:20px var(--ty);letter-spacing:5px;margin:8px 0}.cap b{font:400 44px var(--st);color:var(--red)}
+.fine{font-size:5px;opacity:.7;margin:8px 0}
+.mir{font:400 46px var(--st);transform:scaleX(-1);display:inline-block;margin:6px 0}
+.stud{position:relative;height:110px}.stud i{position:absolute;width:13px;height:13px;border-radius:50%;background:var(--brass);box-shadow:inset -2px -2px 0 rgba(0,0,0,.3)}
+.nr{display:none}@media(max-width:560px){.nr{display:inline;font:700 28px var(--st)}}
+.lw{display:none;font:700 30px var(--st)}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]) .lw{display:inline}}
+:root[data-theme=light] .lw{display:inline}
+.mono{letter-spacing:4px;font-weight:700;font-size:22px}
+button:focus-visible,input:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--brass);margin-top:34px;padding-top:12px;color:var(--mut);font-size:12px;letter-spacing:1px;text-transform:uppercase}
+.footer span:last-child{color:var(--brass)}
+@media(max-width:560px){#app{padding:16px 14px 48px}.rack{grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:20px 12px}.t{height:112px}.big{padding:48px 20px 24px}.footer{font-size:10px}}
+.t{transform-origin:50% 0;animation:drop .6s cubic-bezier(.3,1.5,.5,1) backwards,sway 5s ease-in-out infinite;animation-delay:calc(var(--i)*25ms),calc(var(--i)*-400ms)}
+@keyframes drop{from{opacity:0;transform:translateY(-70px) rotate(calc(var(--r) + 16deg))}}
+@keyframes sway{50%{rotate:2deg}}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}}
+@keyframes dr{to{background-position:60px 0}}
+body{animation:dr 40s linear infinite}
+h1{background:linear-gradient(100deg,var(--brass) 42%,#fff9 50%,var(--brass) 58%) 0/260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shim 4s linear infinite,fade .8s backwards}
+@keyframes shim{to{background-position:-160% 0}}
+.sub{animation:fade .8s .2s backwards}.cnt{animation:fade .8s .35s backwards}
+.big{transform-origin:50% 0;animation:swing .9s cubic-bezier(.2,.8,.3,1) backwards}
+.big.sh{animation:sh .3s}
+@keyframes swing{0%{opacity:0;transform:rotate(-9deg) translateY(-50px)}60%{transform:rotate(3deg)}}
+#pr{animation:fade .5s .25s backwards}form{animation:fade .5s .4s backwards}.nav{animation:fade .5s .5s backwards}
+.ok::after{animation:slam .45s cubic-bezier(.2,2,.4,1)}
+@keyframes slam{from{transform:rotate(-12deg) scale(3);opacity:0}60%{transform:rotate(-12deg) scale(.9)}}
+.go{transition:transform .15s,box-shadow .15s}.go:hover{transform:translateY(-2px);box-shadow:0 4px 0 var(--red)}.go:active{transform:translateY(1px)}
+.lk{transition:padding .2s,color .2s}.lk:hover{color:var(--brass);padding-bottom:7px}
+input{transition:border-color .2s}
+.bell{display:inline-block;transform-origin:50% 0}.bell.r{animation:ring .4s}
+@keyframes ring{25%{transform:rotate(26deg)}50%{transform:rotate(-20deg)}75%{transform:rotate(10deg)}}
+.note{animation:fade .6s}.str{transform-origin:left;animation:grow .8s backwards}
+@keyframes grow{from{transform:scaleX(0)}}
+.stud i{animation:tw 3s ease-in-out infinite}@keyframes tw{50%{filter:brightness(1.5)}}
+.cap b{display:inline-block;animation:bob 1.6s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-6px)}}
+.mir{animation:fade .8s}
+.cf{position:fixed;width:9px;height:14px;z-index:9;pointer-events:none;animation:cf 1.2s ease-out forwards}
+@keyframes cf{40%{transform:translate(calc(var(--x)*.6),var(--y)) rotate(calc(var(--d)*.5))}to{transform:translate(var(--x),360px) rotate(var(--d));opacity:0}}
+.own{display:block;opacity:.65;margin:-2px 0 12px;font-size:13px;font-style:italic}
+h1 span{display:inline-block;cursor:pointer}.jig{animation:jig .4s}@keyframes jig{40%{transform:translateY(-14px) rotate(-6deg)}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--tag);padding:10px 16px;max-width:90vw;z-index:30;border-left:4px solid var(--brass);animation:ts 4s forwards}
+@keyframes ts{0%{opacity:0;transform:translate(-50%,20px)}8%,88%{opacity:1;transform:translate(-50%,0)}100%{opacity:0}}
+.em{position:fixed;top:-40px;z-index:25;pointer-events:none;font-style:normal;animation:fall 2.6s linear both}
+@keyframes fall{to{transform:translateY(115vh) rotate(300deg)}}
+.e-s{animation:spin 1s}@keyframes spin{to{transform:rotate(360deg)}}
+.e-f{transform:rotate(180deg);transition:transform .8s}
+.e-k{animation:bs .15s 5}@keyframes bs{25%{transform:translateX(-12px)}75%{transform:translateX(12px)}}
+.e-z{animation:zm 1.5s}@keyframes zm{50%{transform:scale(1.12)}}
+.e-i{filter:invert(1) hue-rotate(180deg)}
+.e-h{animation:hu 4s linear}.e-d{animation:hu .6s linear 8}@keyframes hu{to{filter:hue-rotate(360deg)}}
+.e-n{filter:brightness(.45) contrast(1.2)}
+.e-m{font-family:'Comic Sans MS','Comic Neue',cursive}
+.big.sh{animation:sh2 .5s}@keyframes sh2{0%,100%{transform:none}15%{transform:translateX(-16px) rotate(-2.5deg)}35%{transform:translateX(13px) rotate(2deg)}55%{transform:translateX(-10px) rotate(-1deg)}75%{transform:translateX(6px)}}
+.dn{position:absolute;left:50%;top:50%;z-index:2;pointer-events:none;color:var(--red);border:5px solid var(--red);font:400 clamp(34px,10vw,64px) var(--st);padding:0 14px;background:var(--tag);transform:translate(-50%,-50%) rotate(-10deg);animation:dn 1.2s forwards}
+@keyframes dn{0%{transform:translate(-50%,-50%) rotate(-10deg) scale(3.2);opacity:0}14%{transform:translate(-50%,-50%) rotate(-10deg) scale(1);opacity:1}78%{opacity:1}100%{transform:translate(-50%,-50%) rotate(-10deg) scale(1);opacity:0}}
+input.bad{animation:bd .6s;border-bottom-color:var(--red)}@keyframes bd{20%{background:rgba(194,52,43,.35)}}
+.quake{animation:qk .09s linear infinite!important}
+@keyframes qk{0%{transform:translate(-10px,6px) rotate(-.9deg)}25%{transform:translate(9px,-8px) rotate(1deg)}50%{transform:translate(-8px,-9px) rotate(-.6deg)}75%{transform:translate(10px,8px) rotate(.8deg)}100%{transform:translate(-6px,3px) rotate(-1deg)}}
+.fell{animation:fell 1.4s cubic-bezier(.5,0,.9,.6) var(--dl) forwards!important}
+@keyframes fell{15%{transform:translate(calc(var(--dx)*.1),-14px) rotate(calc(var(--dr)*.2))}100%{transform:translate(var(--dx),130vh) rotate(var(--dr))}}
+.rise{animation:rise 1s cubic-bezier(.2,1.3,.4,1) var(--dl) backwards!important}
+@keyframes rise{from{transform:translate(var(--dx),130vh) rotate(var(--dr))}}
+.crk{position:fixed;inset:0;width:100%;height:100%;z-index:44;pointer-events:none}
+.crk path{fill:none;stroke:var(--fg);stroke-width:3;stroke-dasharray:1;stroke-dashoffset:1;animation:cr .8s .3s forwards}@keyframes cr{to{stroke-dashoffset:0}}
+.du{position:fixed;z-index:45;width:8px;height:8px;border-radius:50%;background:var(--fg);pointer-events:none;animation:du 2.4s ease-out both}
+@keyframes du{0%{opacity:.5;transform:scale(.5)}100%{opacity:0;transform:translate(var(--x),-130px) scale(2.6)}}
+#wr{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(8,16,13,.75);animation:fade .6s}
+.wrb{position:relative;background:var(--tag);color:var(--ink);padding:50px 28px 26px;max-width:390px;text-align:center;clip-path:polygon(10% 0,90% 0,100% 8%,100% 100%,0 100%,0 8%);transform-origin:50% 0;animation:swing .9s .1s cubic-bezier(.2,.8,.3,1) backwards}
+.wrb::before{content:'';position:absolute;top:12px;left:50%;width:13px;height:13px;margin-left:-6px;border-radius:50%;background:var(--bg);border:2px solid var(--brass)}
+.wrb h2{font:400 34px var(--st);color:var(--red);margin:0 0 8px}.wrb p{margin:8px 0}
+.nls{display:flex;gap:14px;justify-content:center;margin:16px 0 8px}
+.nl{width:36px;height:36px;border:0;border-radius:50%;background:var(--brass);box-shadow:inset -4px -4px 0 rgba(0,0,0,.3);transition:transform .15s,filter .15s}
+.nl:hover:not(:disabled){transform:scale(1.12)}.nl.in{transform:scale(.55);filter:brightness(.6)}
+.hm{position:fixed;z-index:60;font-size:36px;font-style:normal;pointer-events:none;transform-origin:90% 90%;animation:hm .45s forwards}
+@keyframes hm{0%{transform:translate(-18px,-46px) rotate(-75deg);opacity:0}35%{opacity:1}65%{transform:translate(-14px,-24px) rotate(8deg)}100%{transform:translate(-14px,-24px) rotate(8deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){.fell{visibility:hidden}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body><main id="app" aria-label="Left Luggage puzzle office" aria-live="polite"></main>
+<script>
+const h=t=>{let x=5381;for(const c of t)x=(x*33^c.charCodeAt(0))>>>0;return x.toString(36)};
+const nz=s=>s.toLowerCase().replace(/[^a-z0-9]/g,'');
+const $=s=>document.querySelector(s);
+let S={a:{}},T=[];try{S=JSON.parse(localStorage.getItem('lug1'))||S}catch(e){}
+const THEME_KEY='left-luggage-theme';
+try{const savedTheme=localStorage.getItem(THEME_KEY);if(savedTheme==='light'||savedTheme==='dark')document.documentElement.dataset.theme=savedTheme}catch(e){}
+const save=()=>{try{localStorage.setItem('lug1',JSON.stringify(S))}catch(e){}};
+const ANS=[["375ny9"],["o9tccm"],["pikbki"],["2vcu68"],["1sy3wm5"],["zvhfg2"],["ujdxwi"],["1b4vdo8","45h"],[],["zxlcto"],["yizb3g"],["38fdu6"],["yj27hh"],["1oylfr0"],["fimsua"],["38pbiv"],["1ilfg78"],["2tx2k3"],["2wsujn"],[],[],["os7ylg","os8224"],["xcfk3t"],["t0dbvt"],["314khs"],["yj0601"],["382hut"],["pfcuuc"],["375k2p"],["sz2zcx"],["1xrbqnf"],["3hl43"],["vbkj44"],[],[],["p3aicz"],[],[],["26o5xl"],["yisk9w"],["alxbcm","b30j6t"],["33x7b0","29bu5k"],["wm54cf"],["u3ow04","bn9uwv"]];
+const P=[
+"Welcome. To claim this bag, write this tag’s number in words.",
+"One word on this tag is mispelled. Write it exactly as it appears here.",
+"A word is tied to the string. Hold your cursor over it (or press and hold).",
+"The last owner wrote in invisible ink. Select everything (Ctrl+A or Cmd+A) to read it.",
+"The clerk scribbled his note on the tag’s wrapper, not on the tag. Inspect the element.",
+"A word shows here only in a narrow window: <span class='nr'>sliver</span> Squeeze the window, or turn your phone.",
+"This bag isn’t ready. The clerk is in the back. Wait at the counter and do nothing.",
+"Write nothing.",
+"How many bags hang on this rack, counting this one? Digits are fine.",
+"Write the anagram of LISTEN that means quiet.",
+"I have a spine and no bones, pages and no skin. What am I?",
+"How many letters are in the word “letters”? Write the number in words.",
+"<span class='lw'>noon</span> That word only shows in daylight. Use the Day / night switch up top.",
+"Ring the bell seven times. See what falls out.",
+"The answer is at the very bottom of this page.",
+"What word gets shorter when you add two letters to it?",
+"What is always coming but never arrives?",
+"Exactly one number is spelled with its letters in alphabetical order. Write it.",
+"Read the first letter of each line.<br>Boxes stacked to the ceiling<br>Rust on the old hinges<br>Odd shoes, no pairs<br>Wet umbrellas<br>Nobody comes back for these",
+"Write the answer to bag 11, backwards.",
+"Write the first letters of the answers to bags 1, 3, 5 and 11, in that order.",
+"Say it out loud: 🐝 + 🍃",
+"Only the capital letters matter. Write them in order.",
+"Name the colour of the string. The clerk files everything under its CSS name.",
+"What gets wetter the more it dries?",
+"What can you catch, but never throw?",
+"Every letter below stepped one place forward in the alphabet. Step each one back and write the word.<p class='mono'>SJHIU</p>",
+"Someone tapped this onto the counter in dots and dashes.<p class='mono'>-.-. .- -. -.. .-.. .</p>",
+"Eight digits per letter.<p class='mono'>01100010 01100001 01100111</p>",
+"The typist stuttered. Write the word typed twice in a row: “Bags left without a ticket ticket stub will be sold at auction.”",
+"Read the fine print.",
+"Count the brass studs on this tag. Write the number.",
+"The clerk mutters, but only where developers listen.",
+"What day of the week is it where you are?",
+"Write the width of your window in pixels. The clerk allows a hundred either way.",
+"This tag was photographed in a mirror. Write the word.",
+"How many bags have you claimed so far, not counting this one? Digits are fine.",
+"Write the answers to bags 1, 2 and 3 as one long word.",
+"Which word is always pronounced incorrectly?",
+"I speak without a mouth and answer when you call. What am I?",
+"The more of me you take, the more you leave behind. What am I?",
+"What has keys but opens no locks?",
+"Write the first word printed on bag 1.",
+"The last bag. Write the name of this office."];
+const HT=["Spell out the stencilled numeral.","Read slowly. A spellchecker would underline it.","Tooltips appear after a short hover.","Selecting text turns the ink on.","Right-click, Inspect, read the tag’s attributes.","Drag the window edge in, or rotate your phone.","Ten seconds. Hands off.","Literal people type it. Others press Claim.","Scroll the rack, or look at the last number.","Same letters, no noise.","You could be holding one.","L-E-T-T-E-R-S, then spell the count.","Find the sun-shaped switch… it says Day / night.","Click, click, click.","Keep scrolling. Further than that.","It turns into the answer when you add “er”.","It’s a day, not a place.","Between thirty and fifty.","Initials, top to bottom.","You need bag 11 claimed first.","Initials of four answers you already gave.","Say it fast: bee, leaf.","Ignore the small letters.","Inspect the string’s background.","It hangs on a rail in the bathroom.","Sneezes involve it.","Shift each letter back by one.","One letter per gap between spaces.","Eight binary digits per letter.","Look for the stutter.","The text is tiny. Zoom or inspect.","None of them overlap.","F12, then Console.","Check a calendar.","Browser windows are measured in CSS pixels.","Read it from the other side.","The CLAIMED stamps are on the rack.","Glue three earlier answers together.","The word describes how it’s said.","Canyons are good at this.","Walk along a beach.","Pianos and typewriters have them.","Go and read the very first tag.","Check the big title on the rack page."];
+const D=['sunday','monday','tuesday','wednesday','thursday','friday','saturday'],a=i=>S.a[i];
+const CHK={8:v=>v==P.length,19:v=>v==[...a(10)].reverse().join(''),20:v=>v==[0,2,4,10].map(i=>a(i)[0]).join(''),33:v=>v==D[new Date().getDay()],34:v=>Math.abs(+v-innerWidth)<=100&&v!=='',36:v=>v!==''&&+v==Object.keys(S.a).filter(k=>+k!=36).length,37:v=>v==a(0)+a(1)+a(2)};
+const NEED={19:[10],20:[0,2,4,10],37:[0,1,2]};
+const BAD=['That’s not the one.','Not on the manifest.','The clerk checks his ledger and shakes his head.','Wrong bag. Try again.','He stamps it DENIED, gently.'];
+const fx={
+2:s=>s.innerHTML='<div class="str" title="marigold" aria-label="string"></div>',
+3:s=>s.innerHTML='<p class="ink">lemon</p>',
+4:(s,t)=>t.setAttribute('data-clerks-note','the answer is crowbar'),
+6:s=>T.push(setTimeout(()=>s.innerHTML='<p class="note">The clerk slides a note across the counter: <b>kettle</b></p>',10000)),
+13:s=>{let n=0;s.innerHTML='<button class="bell" aria-label="Brass bell">🔔</button><span></span>';const b=s.firstChild;b.onclick=()=>{n++;s.lastChild.textContent=n<7?' '+n:' clapper';b.classList.remove('r');void b.offsetWidth;b.classList.add('r')}},
+14:s=>s.innerHTML='<div style="height:1400px"></div><p class="note">basement</p>',
+22:s=>s.innerHTML='<p class="cap">'+'kWzIqNmDpOcWv'.replace(/[A-Z]/g,'<b>$&</b>')+'</p>',
+23:s=>s.innerHTML='<div class="str" style="background:tomato"></div>',
+30:s=>s.innerHTML='<p class="fine">the answer is lantern</p>',
+31:s=>{let o='<div class="stud">';for(let k=0;k<18;k++)if(k!=7)o+=`<i style="left:${(k%6)*16+3+k*7%5}%;top:${(k/6|0)*32+4+(k*11%7)*2}%"></i>`;s.innerHTML=o+'</div>'},
+32:()=>console.log('%cThe clerk mutters: the word is pewter.','font:16px monospace'),
+35:s=>s.innerHTML='<p class="mir">buckle</p>'};
+const dk=()=>{const t=document.documentElement.dataset.theme;return t?t==='dark':matchMedia('(prefers-color-scheme:dark)').matches};
+const setTheme=theme=>{document.documentElement.dataset.theme=theme;try{localStorage.setItem(THEME_KEY,theme)}catch(e){};const b=$('#th');if(b){b.textContent=theme==='dark'?'Day mode':'Night mode';b.setAttribute('aria-label',theme==='dark'?'Switch to light theme':'Switch to dark theme');b.setAttribute('aria-pressed',String(theme==='dark'))}};
+const clr=()=>{T.forEach(clearTimeout);T=[]};
+function home(){clr();const n=Object.keys(S.a).length,N=P.length;
+$('#app').innerHTML=`<div class="top"><button type="button" class="lk" id="th" aria-label="Switch colour theme">Night mode</button></div><h1>${LT('LEFT',0)}<br>${LT('LUGGAGE',4)}</h1>
+<p class="sub">Nobody has collected these bags in years. Each tag wants one word. The answer isn’t always written on the tag, so look around the counter and ask the page awkward questions.</p>
+<p class="cnt">${n} of ${N} bags claimed${n==N?'. The rack is empty. The clerk locks up and, for once, smiles.':''}</p>
+<div class="rack">${P.map((_,i)=>`<button class="t${i in S.a?' d':''}" style="--r:${(i*37%7-3)*.9}deg;--i:${i}" data-i="${i}" aria-label="Bag ${i+1}${i in S.a?', claimed':''}"${i in S.a?` title='${BAGS[i]}'`:''}><b>${String(i+1).padStart(2,'0')}</b></button>`).join('')}</div>
+<footer class="footer"><span>Left Luggage · Lost Property Office</span><span>Est. before anyone could say</span></footer>`;
+setTheme(dk()?'dark':'light');
+$('#th').onclick=()=>setTheme(dk()?'light':'dark');
+document.querySelectorAll('.t').forEach(b=>b.onclick=()=>open(+b.dataset.i))}
+function open(i){clr();const N=P.length,miss=(NEED[i]||[]).filter(k=>S.a[k]==null).map(k=>k+1);
+$('#app').innerHTML=`<button class="lk" id="bk">Back to the rack</button><article class="big" id="tg"><div class="no" data-i="${i}">Bag ${i+1}</div><small class="own">${OW(i)}</small><div id="pr">${P[i]}</div><div id="st"></div>
+<form id="f"><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer" placeholder="write the word here"><button class="go" type="submit">Claim</button></form>
+<p class="ck" id="ck"></p></article><div class="nav"><button class="lk" id="pv">Previous bag</button><button class="lk" id="hn">Ask the clerk</button><button class="lk" id="nx">Next bag</button></div><footer class="footer"><span>Left Luggage · Lost Property Office</span><span>All claims are final</span></footer>`;
+const say=t=>{const c=$('#ck');c.textContent=t;c.style.animation='none';void c.offsetWidth;c.style.animation='fade .4s'},tg=$('#tg');
+const need=()=>miss.length?(say('Claim bag '+miss.join(', ')+' first, then come back.'),1):0;
+if(i in S.a){tg.classList.add('ok');say('Already claimed. Inside: '+BAGS[i])}else{say('The clerk waits.');need()}
+$('#bk').onclick=home;$('#pv').onclick=()=>open((i+N-1)%N);$('#nx').onclick=()=>open((i+1)%N);
+$('#hn').onclick=()=>say('The clerk leans in: “'+HT[i]+'”');
+$('#f').onsubmit=e=>{e.preventDefault();hammer();if(wrecked)return;const v=nz($('#in').value);if(need())return;
+if(CHK[i]?CHK[i](v):ANS[i].includes(h(v))){S.a[i]=v;save();tg.classList.add('ok');say('Claimed. Inside the bag: '+BAGS[i]);pop();ms();spd()}
+else{if(!eggw(v,i,say))say(BAD[Math.random()*BAD.length|0]);nope(tg)}};
+fx[i]&&fx[i]($('#st'),tg);scrollTo(0,0)}
+function pop(){for(let k=0;k<22;k++){const p=document.createElement('i');p.className='cf';p.style.cssText=`left:${50+(Math.random()-.5)*30}%;top:40%;background:${['var(--brass)','var(--red)','var(--tag)'][k%3]};--x:${(Math.random()-.5)*420}px;--y:${-80-Math.random()*220}px;--d:${Math.random()*720-360}deg`;document.body.append(p);setTimeout(()=>p.remove(),1300)}}
+const pick=a=>a[Math.random()*a.length|0];
+const LT=(s,o)=>[...s].map((c,k)=>`<span data-k='${k+o}'>${c}</span>`).join('');
+const BAGS=['a single left glove, thumb up.','a tuba, polished, slightly smug.','forty-one jars of marigold honey.','a lemon, a candle and a love letter in invisible ink.','a crowbar and a note: “sorry about the door”.','a very thin suitcase. Suspiciously thin.','a kettle, still warm. Impossible.','absolutely nothing, gift wrapped.','a spreadsheet of every bag. It says 44.','a library card marked SHHH.','a paperback with the last page missing.','seven socks. No pairs.','a sundial that reads noon. Always.','one brass clapper, wrapped in tissue.','a trapdoor key and a torch.','a pocket-sized bag. Short, but heavy.','a calendar with every page marked tomorrow.','a birthday cake with forty candles, all out.','a brown paper parcel tied with string.','a mirror-written note that says koob.','a codebook with only four letters in it.','a bee in a jar and a single leaf.','a window with no wall.','a tin of tomato soup, unopened since 1974.','a towel that is drier than anything.','a hat, a scarf and one sneeze.','a compass that points left.','a candle that burns only in dots and dashes.','a bag containing a bag containing a bag.','two tickets for the same seat.','a lantern that lights only the fine print.','seventeen brass studs and a tiny screwdriver.','a pewter tankard that hums.','a desk diary where every entry says today.','a tape measure that gives up at one hundred.','a belt buckle, reversed.','a ledger that updates itself.','a very long word. It has been waiting.','a dictionary with everything spelled slightly off.','a megaphone aimed at a cliff.','a pair of old shoes, both left.','a piano tuned to the wrong century.','a welcome mat that has never been stepped on.','the key to the whole office. It was in your pocket.'];
+const OW=n=>{const f=['Mr. Pettigrew','Dame Odalys','a gentleman in a hat','Captain Wren','Mrs. Abernathy','an unnamed cellist','the Duke of Nowhere','Professor Quill','a small child','Ms. Fennimore','somebody’s uncle'],w=['in a hurry','without a word','with a wink','in the rain','muttering'];return `Left by ${f[n%11]} in ${1931+n*17%88}, ${w[n%5]}.`};
+const TL=['L is for Lost.','E is for Everything, unclaimed.','F is for Found. Rarely.','T is for Tag. You’re it.','L is for Left behind.','U is for Unclaimed.','G is for Gone.','G is for Gloves, mostly.','A is for Abandoned.','G is for Gift, possibly.','E is for Eventually.'];
+const CQ=['The clerk glances up, then down again.','Please do not poke the signage.','That tickles, said the ink.','Nothing there. Probably.','The clerk makes a note. Of you.','You can’t claim the wall.','Stop that. Or don’t.','A moth leaves the lampshade.','Somewhere, a ledger sighs.','Eleven out of ten clerks recommend patience.','This text is not for sale.','The text sighs. It did not.'];
+const IDLE=['The clerk coughs politely.','Somewhere a clock ticks. There is no clock.','A bag shifts on the shelf.','The clerk is pretending to write something.','You are the only customer. Still.','A pigeon taps the window twice.','The lamp flickers on the third beat.','The clerk hums a tune he doesn’t know.','Bags don’t unpack themselves.','Dust settles. Eventually.','The ledger turns a page by itself.','Did you try turning the office off and on?'];
+const MS={1:'First bag claimed. The clerk raises one eyebrow.',5:'Five bags. A small crowd of dust bunnies applauds.',10:'Ten bags. The clerk learns your name. He forgets it.',15:'Fifteen. The lamp brightens, just slightly.',20:'Twenty. You’re getting suspicious. He likes that.',25:'Twenty-five. The clerk makes tea for two.',30:'Thirty. A cat has joined the staff.',35:'Thirty-five. The rack looks lighter.',40:'Forty. The clerk starts packing his lunch.',43:'One bag left. It has your name on it. Not really.',44:'Every bag claimed. The office is yours.'};
+const NM={'0:1':'Words, not digits.','0:uno':'Wrong language. Right idea.','1:misspelled':'Spelled correctly. That’s the problem.','1:mistake':'Not a mistake. A misspelling.','2:string':'The string is the clue. The word is tied to it.','4:note':'The note is the clue, not the answer.','5:narrow':'Too obvious. It’s a thinner word.','6:wait':'You’re doing great. Keep doing nothing.','7:zero':'Zero is something. Nothing is nothing.','9:quiet':'That’s the meaning. Rearrange the letters.','9:listen':'That’s the original. Shuffle it.','10:books':'One of them. Singular, please.','11:7':'Spell it out.','11:six':'Count again. Slowly.','12:sun':'Brighter. Higher. Twelve o’clock.','13:bell':'You rang it. Now what fell out?','14:bottom':'You found the bottom. Now read it.','15:shorter':'That’s the answer plus two letters. Remove them.','16:today':'Today already arrived. Never mind.','17:fourty':'Everyone misspells it. That’s the joke.','21:bee':'Only half of it.','23:red':'Specific. The clerk is particular.','23:orange':'Warmer. Still not a CSS name.','24:sponge':'Close. Think bathroom.','29:the':'Different stutter.','30:fine':'Yes, it is. Now read it.','32:log':'Console, not logs.','34:today':'Name the day, not the word today.','35:mirror':'You’re looking at a mirror image.','38:wrong':'Nice try. Closer than you’d think.','39:canyon':'Where you’d hear it. Not what it is.','41:key':'Keys are what it has.','43:lostproperty':'Different office.'};
+const KW={'xyzzy':'Nothing happens.|k','plugh':'A hollow voice says “Plugh”.|n','zork':'You are in a left-luggage office. There are 44 tags here.','hello':'The clerk nods without looking up.','hola':'Wrong office for Spanish. Right spirit.','namaste':'The clerk bows. A bag falls off the shelf.','chai':'The clerk pours you a cup. Extra ginger.|r☕','cricket':'Howzat! The clerk raises one finger.|r🏏','diwali':'Lights on the rack tonight.|r🪔','holi':'Colours everywhere. The clerk stays dry.|h','please':'Manners! Rare in this office. Still wrong.|r🙏','thanks':'Don’t mention it. Seriously, don’t.','sorry':'Apology accepted. Paperwork denied.','help':'The clerk points at the sign. The sign says NO.','lost':'Everything here is. That’s the business model.','found':'Finders are not keepers. Finders are fined.','bell':'Ding. The clerk sighs.|r🔔','coffee':'The clerk’s cup is empty. Again.|r☕','tea':'Earl Grey, hot. The clerk approves.|r🍵','cake':'The cake is a lie, but this sponge is real.|r🍰','pizza':'The clerk accepts bribes in cheese.|r🍕','cat':'A cat watches from the shelf. It has always been there.|r🐈','dog':'A very good boy trots past the counter.|r🐕','bird':'A pigeon walks in. It has a ticket.|r🐦','fish':'So long, and thanks for all the fish.|r🐟','moon':'The moon is a bag too. Unclaimed.|r🌙','star':'A star falls into lost property.|r⭐','sun':'Light mode, but outside.|r☀','rain':'Umbrellas are on shelf B.|r☔','snow':'The rack frosts over. Briefly.|r❄','fire':'Please do not set the bags on fire.|r🔥','love':'There is a heart in bag 18. Tell no one.|r💛','ghost':'Bag 4’s previous owner says hi.|n','secret':'This isn’t the secret. Keep looking.','egg':'Correct. There are hundreds. Good luck.|r🥚','easter':'Wrong holiday. Right instinct.|r🐰','konami':'Try the arrows. You know the ones.','↑↑↓↓←→←→ba':'Thirty extra lives. Zero extra bags.|c','iddqd':'God mode on. The clerk remains unimpressed.|z','idkfa':'All keys acquired. None fit anything here.','sudo':'You are not in the sudoers file. This incident will be reported to the clerk.','admin':'The clerk is the admin. He is also the janitor.','password':'Hunter2. No, wait, that’s the clerk’s.','cheat':'Cheating is allowed. Cheating is also visible.','answer':'The answer is not the word answer. Probably.','hint':'Use the Ask the clerk button. He loves it.','spoiler':'The tag is a spoiler. Don’t read it.','dance':'The whole rack boogies.|d','disco':'Ball’s up.|d','party':'Someone unpacked a party bag.|c','spin':'Round and round.|s','flip':'The office flips. The clerk doesn’t.|f','shake':'Hold on to your tags.|k','zoom':'Closer.|z','night':'The lamp is dimmed.|n','invert':'The negative is also a picture.|i','rainbow':'Over the rack.|h','comic':'Comic Sans. You monster.|m','matrix':'Follow the white rabbit.|r01🐇','tardis':'Bigger on the inside. Please collect within 30 days.','narnia':'Bag 13 is a wardrobe. Do not open.','platform':'Platform nine and three quarters is next door.','rosebud':'It’s a sled. Sorry.','hodor':'Hodor.','gandalf':'A bag shall not pass. Wait, which way is the rack?','pikachu':'Pika? No. Wrong bag.','mario':'Sorry, your bag is in another castle.','zelda':'It’s dangerous to go alone. Take this ticket.','doge':'Much luggage. Very left. Wow.|r🐕','stonks':'Bag futures are up 0%.|r📈','ledger':'The ledger knows. The ledger always knows.','stamp':'THUNK. Somewhere, a bag is approved.','hook':'Each tag has a hook. Each hook has a story.','rack':'The rack has 44 hooks. Not one is spare.','string':'Pull it and see. Don’t actually.','tag':'You’re it.','bag':'Bags within bags. Bags all the way down.','suitcase':'Samsonite, or something that wishes it were.','trunk':'An elephant’s? No. A very old one.','umbrella':'Never there when it rains. Always there when it doesn’t.','hat':'A hat for every occasion. None fit.','socks':'Seven. No pairs. We’ve been over this.','shoes':'Both left. Always both left.','clerk':'Yes? Oh. You.','office':'LEFT LUGGAGE. Established before anyone could say.','claim':'That’s what you’re supposed to do. Do it on the right word.','luggage':'The clerk beams. Then remembers it isn’t bag 44.','ticket':'Admit one. Disappointment.','42':'The answer. Also not the answer.','1337':'Elite. The clerk raises a monocle.','lol':'The clerk does not laugh. His eyebrow does.','wow':'The clerk shrugs. “Yeah.”','meow':'The cat on the shelf meows back.|r🐈','woof':'A dog barks from nowhere.|r🐕','quack':'A rubber duck appears on the counter.|r🦆','boo':'The clerk does not startle. The lamp does.|n'};
+function toast(m){document.querySelectorAll('.toast').forEach(t=>t.remove());const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),4100)}
+function rain(s){const a=[...s];for(let k=0;k<26;k++){const e=document.createElement('i');e.className='em';e.textContent=a[k%a.length];e.style.cssText=`left:${Math.random()*96}%;animation-delay:${Math.random()*1.5}s;font-size:${20+Math.random()*22}px`;document.body.append(e);setTimeout(()=>e.remove(),4400)}}
+function fxrun(f){const c=f[0];if(c=='c')pop();else if(c=='r')rain(f.slice(1));else{const d={s:1100,f:3000,k:800,z:1500,i:4000,h:4000,d:5000,n:4000,m:6000}[c];document.body.classList.add('e-'+c);setTimeout(()=>document.body.classList.remove('e-'+c),d)}}
+function eggw(v,i,say){if(!v){say('You wrote nothing. Brave, but wrong here.');return 1}const r=NM[i+':'+v]||KW[v];if(!r)return 0;const[m,f]=r.split('|');say(m);f&&fxrun(f);return 1}
+function ms(){const n=Object.keys(S.a).length;if(MS[n])setTimeout(()=>{toast(MS[n]);if(n==44)rain('🧳🎉')},1300)}
+let kb='',last=Date.now();
+addEventListener('pointerdown',()=>last=Date.now());
+addEventListener('keydown',e=>{last=Date.now();if(e.target.tagName=='INPUT'||e.ctrlKey||e.metaKey||e.altKey)return;const k={ArrowUp:'↑',ArrowDown:'↓',ArrowLeft:'←',ArrowRight:'→'}[e.key]||(e.key.length==1?e.key.toLowerCase():'');kb=(kb+k).slice(-24);for(const w in KW)if(kb.endsWith(w)){const[m,f]=KW[w].split('|');toast(m);f&&fxrun(f);kb='';break}});
+document.addEventListener('click',e=>{const t=e.target;if(t.dataset&&t.dataset.k!=null&&t.closest('h1')){toast(TL[+t.dataset.k]);t.classList.remove('jig');void t.offsetWidth;t.classList.add('jig');return}const n=t.closest('.no');if(n)toast('Rumour: '+RUM[+n.dataset.i]);else if(t.closest('.sub,.cnt,#pr,.own'))toast(pick(CQ))});
+document.addEventListener('contextmenu',()=>toast('The clerk sees you inspecting. Carry on.'));
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)toast('You’re back! The clerk missed you. Slightly.')});
+setInterval(()=>{if(Date.now()-last>25000){toast(pick(IDLE));last=Date.now()}},5000);
+{const d=new Date(),hr=d.getHours();setTimeout(()=>toast(d.getDay()%6==0?'Weekend shift. The clerk is not paid for this.':hr<5?'The office closed hours ago. The clerk let you in anyway.':hr<12?'Morning. The kettle is on, the bags are not.':hr<17?'Afternoon. Nothing has been collected since 1987.':hr<22?'Evening. The lamp is lit for you.':'Late. The clerk pretends not to be awake.'),1500)}
+console.log('%cLEFT LUGGAGE','font:28px Impact;color:#d3a64a','\nThe clerk knows you are reading the console. Try clerk()');window.clerk=()=>'Yes? Oh. You. Try typing xyzzy somewhere.';
+Object.assign(KW,{'bye':'Goodbye. Your bags will miss you.','yes':'The clerk says no. Reflexively.','nope':'Nope is also an answer. Just not here.','maybe':'Maybe is not on the manifest.','why':'Why not. Next.','who':'The clerk. Who else?','what':'The answer to the question is “what”. You win nothing.','where':'Left. Always left.','when':'Closing time. Always closing time.','how':'Slowly.','bored':'Try bag 14. It rings.','tired':'The clerk has a stool. Do not touch the stool.','hungry':'There’s a biscuit in bag 26. Do not eat it.|r🍪','sleep':'Zzz. The lamp dims to keep you company.|n','dream':'You were in a bag. It was a good bag.|n','magic':'Abracadabra. Nothing happened. The clerk is impressed.|r✨','wizard':'You’re a wizard. Collect your bag.|r🧙','dragon':'A tiny dragon sleeps on the rack. Do not wake.|r🐉','robot':'Beep. The clerk was a robot all along. No.|r🤖','alien':'Take me to your leader. The clerk is it.|r👽','pirate':'Arr. Treasure is in bag 33. Tankard, mostly.|r☠','ninja':'You didn’t see the clerk. He didn’t see you.|r🥷','zombie':'Braaains? No. Braaags.|r🧟','vampire':'The clerk wants your ticket before sunrise.|r🦇','unicorn':'There is one in bag 23. It has no window.|r🦄','sloth':'Slow. Just like the queue.|r🦥','panda':'Black, white and unclaimed.|r🐼','owl':'Who claimed this? Nobody.|r🦉','frog':'Ribbit. Check the lamp.|r🐸','snake':'Please close the bag.|r🐍','mouse':'It nibbled bag 19. You’re welcome.|r🐭','bee':'Buzz. Half of belief.|r🐝','bug':'Features, not bugs.|r🐛','spider':'The ledger has been spun over.|r🕷','whale':'Too big for the rack.|r🐋','shark':'Dun dun. Dun dun.|r🦈','duck':'The duck is back. Don’t ask.|r🦆','penguin':'Cold feet. A flightless bag.|r🐧','bear':'Bears are not permitted past the counter.|r🐻','lion':'Roar. Claim ticket, please.|r🦁','monkey':'See no evil, claim no bag.|r🐒','apple':'An apple a day keeps the clerk away.|r🍎','banana':'Peel it back.|r🍌','cheese':'The clerk’s weakness, as noted.|r🧀','burger':'Sorry, lost property has no lunch.|r🍔','taco':'Tuesday. Probably.|r🌮','pasta':'Al dente, like the queue.|r🍝','icecream':'Melting at the counter.|r🍦','cookie':'Not that kind. Accept all?|r🍪','popcorn':'The show is about to start. Nothing happens.|r🍿','beer':'Not on shift.|r🍺','wine':'1987. Not a good year for left luggage.|r🍷','music':'The radio hums. It’s off.|r🎵','piano':'Bag 42 is a piano. It is out of tune.|r🎹','guitar':'Someone left a guitar and a noise complaint.|r🎸','drum':'Pa-rum-pa. The clerk is not a fan.|r🥁','sing':'Please stop. The lamp is trembling.|r🎤','movie':'Lights, camera, lost property.|r🎬','book':'Bag 11. Page missing.|r📖','pen':'The pen is mightier than the ticket.|r🖊','paper':'Tickets only. No origami.|r📄','clock':'It’s half past nowhere.|r🕰','time':'Always closing time.','money':'The clerk takes cash. And cheese.|r💰','gold':'All that glitters is claimed.|r🥇','diamond':'A very shiny bag. Unclaimed.|r💎','crown':'Left by a king. He misses it.|r👑','key':'You’re holding one. Look at bag 44.|r🔑','door':'Bag 5 left it ajar.|r🚪','lock':'It clicks open. It was never locked.|r🔒','mail':'You’ve got paper.|r✉','phone':'Ring ring. It’s the clerk. He’s next to you.|r📞','camera':'Smile. The ledger photographs everybody.|r📷','rocket':'To the moon, then back to the rack.|r🚀','train':'The 9:15 left at 9:14.|r🚂','bus':'The stop is across the road. Ask for bag 33.|r🚌','car':'Valet parking? Wrong office.|r🚗','plane':'Carousel 4. Nobody home.|r✈','boat':'Stowaway bags. Stowaway tags.|r⛵','bike':'The chain fell off in 1994.|r🚲','flag':'Plant it. Claim nothing.|r🏁','map':'You are here. So are the bags.|r🗺','compass':'Points left. Always.|r🧭','tent':'Pitch it in the corner.|r⛺','camp':'Marshmallows are not luggage.|r🏕','mountain':'Higher than the rack. Less crowded.|r⛰','beach':'Sand in every bag.|r🏖','ocean':'Wave to the clerk.|r🌊','tree':'Leaves left behind. All of them.|r🌳','flower':'Marigold. You know the one.|r🌼','rose':'The clerk has a thorn in his side.|r🌹','cloud':'Cloud storage. For luggage.|r☁','wind':'Hold on to your hat. Bag 26.|r💨','storm':'Thunder. Shelf B is wet.|r⛈','sunset':'The lamp goes orange.|n','sunrise':'The rack wakes up.|z','heart':'Thump-thump.|r❤','smile':'The clerk smiles. It takes effort.|r😀','cry':'There, there. Tissues in bag 22.|r😢','angry':'The stamp thumps. Aggressively.|k','happy':'The rack hums.|r😊','sad':'The lamp flickers in sympathy.|n','cool':'Shades on. The lamp agrees.|r😎','fast':'Faster than the clerk. Not hard.|k','slow':'Gooood. Take your tiiiime.','big':'Zoom zoom.|z','small':'Tiny tag energy.','zero':'Nothing times anything is nothing.','hundred':'Not enough bags.','forever':'The clerk has been here that long.','never':'Never say never. Say “not yet”.','always':'Always left. Never right.'});
+const RUM=['the clerk was born in this office.','someone once spelled it right. Once.','the honey is older than the clerk.','the love letter was never sent.','the door it opened is still missing.','it is thinner on Tuesdays.','the kettle boils itself at 3am.','the box is heavier than it looks.','the spreadsheet has a hidden sheet.','the librarian was never found.','the last page is in bag 39.','the eighth sock is somewhere in the building.','at midnight it shows eleven.','the bell has been silent since 1962.','there’s a door under the rack. Don’t knock.','it grew an inch last winter.','every page is the same page.','someone blew out one candle early.','the string has never been cut.','it’s a note from a mirror to itself.','the four letters are a secret. Yours.','the bee has asked for a lawyer.','the view is excellent.','the soup has aged well.','the towel has seen things.','the sneeze is still in there.','it once pointed right. Once.','it only burns when nobody is watching.','the innermost bag holds a smaller clerk.','both tickets were used.','the fine print mentions you.','one stud is a slightly different colour.','it hums in B flat.','the diary ends tomorrow.','it measures exactly what you expect.','the buckle sees in the mirror.','the ledger knows how many you’ve claimed.','the word is longer than it looks.','every word in it is slightly wrong.','it answers back, but late.','both shoes are looking for each other.','the piano has a ghost. A quiet one.','the mat says welcome. The door says no.','the office has one more door.'];
+Object.assign(NM,{'3:ink':'Ink is how it’s written, not what it says.','3:juice':'Closer. Think citrus.','4:inspect':'Good verb. Now look closer.','4:element':'Right panel, wrong word.','6:patience':'A virtue, but not the word.','6:seconds':'Ten of them. Count them silently.','7:blank':'Blank is nothing. Nothing is blank. Almost.','8:forty':'Warm. Add four.','8:fortyfour':'In digits, please.','10:novel':'A kind of it. One syllable shorter.','10:page':'Pages are part of it.','11:letter':'Letter is half of it. Count them.','12:midday':'Same idea. Different word.','12:day':'Closer. A specific moment.','14:floor':'Lower. Much lower.','14:cellar':'Same idea, different word.','15:tall':'The opposite, ironically.','16:future':'Close. A specific day.','17:thirty':'Warmer. Add ten.','17:fifty':'Colder. Take ten off.','18:red':'Not red. Brown paper, brown parcel.','19:book':'Right word, wrong way round.','24:rag':'Close. Think larger.','25:ball':'Can’t catch what you can’t throw.','26:left':'Wrong direction, right idea.','26:wrong':'The opposite of the answer.','27:dark':'Light a fire under it.','28:cab':'Wrong letter.','28:ten':'Eight digits per letter, not eight letters.','31:sixteen':'One more. Count again.','31:eighteen':'One fewer. Count again.','32:console':'The place, not the word.','37:chain':'The chain is the idea. The word is longer.','39:cave':'Where you’d hear it. Still not it.','40:steps':'Almost. Count the feet.','40:feet':'Close. The marks they leave.','41:organ':'Different instrument.','42:hello':'A greeting. The first word is more formal.','43:officer':'No officers here.'});
+const SK={'?':'Looking for help? The clerk is looking for his glasses.',Escape:'Nothing to escape from. Yet.',Backspace:'Undo what? You haven’t done anything.',Delete:'Please don’t delete the office.',CapsLock:'THE CLERK IS SHOUTING NOW.',F1:'Help is not coming.',Home:'Home is where the rack is.',End:'The end is nearer than you think. Or not.',PageDown:'Down, down, down the rack.',PageUp:'Up, up, up the rack.',Insert:'Insert coin. Or ticket.'};
+addEventListener('keydown',e=>{if(e.target.tagName!='INPUT'&&SK[e.key])toast(SK[e.key])});
+const MO=['January. The rack is draped in tinsel nobody collected.','February. Valentine’s bags are piling up.','March. Spring cleaning. The clerk refuses.','April. Showers. Umbrellas on shelf B.','May. The dust is in bloom.','June. Hat season. Every hat is a left hat.','July. Heat wave. The lamp sweats.','August. The clerk is on holiday. This is a recording.','September. Back to school. Back to the rack.','October. Spooky season. Bag 4 is delighted.','November. The days shorten. The rack doesn’t.','December. Gift tags only. No refunds.'];
+setTimeout(()=>toast(MO[new Date().getMonth()]),7000);
+const CT=[];let WN=0;const WM={3:'Three denials. The stamp warms up.',5:'Five denials. The clerk offers you a chair.',10:'Ten denials. The stamp is getting tired.',15:'Fifteen. Are you doing this on purpose?',25:'Twenty-five. The ink is running low.',40:'Forty. The clerk has started a tally on the wall.',60:'Sixty. The clerk is betting on you eventually.',100:'One hundred denials. You win nothing, and we’re proud.'};
+function spd(){const t=Date.now(),n=CT.push(t),m=n==3&&t-CT[0]<90000?'Speedrunner! Three bags in ninety seconds.':n==5&&t-CT[0]<180000?'Five bags in three minutes. The clerk is rattled.':n==10&&t-CT[0]<600000?'Ten in ten minutes. Suspicious.':'';if(m)setTimeout(()=>toast(m),3200)}
+function nope(t){t.classList.remove('sh');void t.offsetWidth;t.classList.add('sh');const d=document.createElement('b');d.className='dn';d.textContent='DENIED';t.append(d);setTimeout(()=>d.remove(),1200);const n=$('#in');if(n){n.classList.remove('bad');void n.offsetWidth;n.classList.add('bad')}navigator.vibrate&&navigator.vibrate(90);for(let k=0;k<9;k++){const e=document.createElement('i');e.className='em';e.textContent='✗';e.style.cssText=`left:${6+k*11}%;color:var(--red);font-size:32px;animation-delay:${k*.06}s`;document.body.append(e);setTimeout(()=>e.remove(),3300)}if(WM[++WN])setTimeout(()=>toast(WM[WN]),900)}
+let HT2=[],wrecked=0;
+function hammer(){const t=Date.now();HT2=HT2.filter(x=>t-x<4000);HT2.push(t);if(HT2.length==6&&!wrecked)toast('The counter is creaking. Gently, please.');if(HT2.length>=12&&!wrecked)wreck()}
+function dust(){for(let k=0;k<34;k++){const e=document.createElement('i');e.className='du';e.style.cssText=`left:${Math.random()*100}%;top:${50+Math.random()*50}%;--x:${(Math.random()-.5)*160}px;animation-delay:${Math.random()*.6}s`;document.body.append(e);setTimeout(()=>e.remove(),3300)}}
+function hm(b){const r=b.getBoundingClientRect(),e=document.createElement('i');e.className='hm';e.textContent='🔨';e.style.left=r.left+'px';e.style.top=r.top+'px';document.body.append(e);setTimeout(()=>e.remove(),500)}
+function rise(p,j){p.style.setProperty('--dl',j*.06+'s');p.classList.remove('fell');p.classList.add('rise');setTimeout(()=>p.classList.remove('rise'),1400+j*60)}
+function wreck(){wrecked=1;const b=document.body;document.activeElement&&document.activeElement.blur();document.documentElement.style.overflow='hidden';b.classList.add('quake');toast('Please stop hammering the counter!');
+const c=document.createElement('div');c.innerHTML=`<svg class='crk' viewBox='0 0 100 100' preserveAspectRatio='none'><path pathLength='1' d='M50 0 L46 18 L54 30 L44 48 L52 62 L47 80 L50 100 M46 18 L30 26 L22 40 M54 30 L72 34 L84 52 M44 48 L28 58 M52 62 L70 70'/></svg>`;b.append(c);
+const ps=[...document.querySelectorAll('#bk,.big,.big>*,.nav button')];ps.forEach(p=>{p.style.setProperty('--dx',(Math.random()-.5)*700+'px');p.style.setProperty('--dr',(Math.random()-.5)*220+'deg');p.style.setProperty('--dl',(p.classList.contains('big')?1:Math.random()*.8)+'s')});
+setTimeout(()=>{b.classList.remove('quake');ps.forEach(p=>p.classList.add('fell'));rain('🪵🔩');dust()},1600);
+setTimeout(()=>{const o=document.createElement('div');o.id='wr';o.style.pointerEvents='none';setTimeout(()=>o.style.pointerEvents='',1300);
+o.innerHTML=`<div class='wrb'><h2>CLOSED FOR REPAIRS</h2><p>You hammered the counter until the whole office came apart. The clerk is holding a plank and looking at you.</p><p><small>Hammer all five nails to rebuild it.</small></p><div class='nls'>${`<button class='nl' aria-label='Nail'></button>`.repeat(5)}</div><p id='nc'>Nails: 0 of 5</p></div>`;document.body.append(o);
+const NL=['The shelf coughs.','The hooks remember their tags.','The lamp relights.','The clerk hands you a spare plank.','Almost respectable.'];let n=0;
+o.querySelectorAll('.nl').forEach(nb=>nb.onclick=()=>{nb.classList.add('in');nb.disabled=true;n++;$('#nc').textContent=`Nails: ${n} of 5. ${NL[n-1]}`;hm(nb);b.classList.add('e-k');setTimeout(()=>b.classList.remove('e-k'),700);ps.filter((_,k)=>k%5==n-1).forEach((p,j)=>rise(p,j));
+if(n==5)setTimeout(()=>{o.remove();c.remove();document.documentElement.style.overflow='';wrecked=0;HT2=[];rain('🔧✨');toast('The clerk: “That’s coming out of your deposit.”')},1500)})},3600)}
+home();
+</script></body></html>
