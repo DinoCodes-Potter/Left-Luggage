@@ -20,6 +20,8 @@ The visual identity is deliberately tactile and archival: deep station-green, ag
 - **Day and night themes**, with the selected theme remembered between visits.
 - **Clerk hints**, optional feedback, hidden interactions and playful easter eggs.
 - **Responsive layout** for desktop and mobile, with keyboard focus states and reduced-motion support.
+- **About, FAQ, contact, privacy and terms sections** accessible from the main page.
+- **SEO basics:** canonical URL, XML sitemap and robots.txt.
 - **No framework or runtime dependencies.** Google Fonts are loaded remotely; system fallbacks are provided.
 
 ## Project structure
@@ -53,6 +55,10 @@ Then visit `http://localhost:8000`.
 2. Under **Build and deployment**, choose **Deploy from a branch**.
 3. Select `main` and `/ (root)`, then save.
 4. Wait for the Pages deployment to finish; GitHub will show the published URL in the Pages settings.
+
+## Site information and discoverability
+
+The public site includes project information, an experience showcase, FAQ, contact/support link, privacy policy and terms of use. The XML sitemap is available at [`sitemap.xml`](sitemap.xml), with crawler guidance in [`robots.txt`](robots.txt).
 
 ## Privacy and storage
 
