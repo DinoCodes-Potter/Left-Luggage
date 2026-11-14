@@ -243,7 +243,7 @@ $('#app').innerHTML=`${themeBar()}<h1>${LT('LEFT',0)}<br>${LT('LUGGAGE',4)}</h1>
 <section class="info" id="experience"><h2>What you can do here</h2><div class="tiles">
 <div class="tile"><strong>44 bag puzzles</strong><p>Riddles, wordplay, hidden clues and little browser experiments.</p></div>
 <div class="tile"><strong>Clerk hints</strong><p>Ask for a nudge when a tag has you stumped.</p></div>
-<div class="tile"><strong>Two themes</strong><p>Switch between day and night colour schemes.</p></div>
+<div class="tile"><strong>Four themes</strong><p>Choose Night Shift, Day Shift, Archive or Signal Room from the counter controls.</p></div>
 <div class="tile"><strong>Your own pace</strong><p>Progress is saved locally in this browser. No account required.</p></div>
 </div><p class="smallprint">There are no physical products for sale, paid plans, subscriptions or booking services on this site. The “showcase” is the free interactive experience itself.</p></section>
 <section class="info" id="proof"><h2>From the ledger</h2><div class="tiles">
@@ -283,6 +283,7 @@ function open(i){clr();const N=P.length,miss=(NEED[i]||[]).filter(k=>S.a[k]==nul
 $('#app').innerHTML=`${themeBar()}<button class="lk" id="bk">Back to the rack</button><article class="big" id="tg"><div class="no" data-i="${i}">Bag ${i+1}</div><small class="own">${OW(i)}</small><div id="pr">${P[i]}</div><div id="st"></div>
 <form id="f"><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer" placeholder="write the word here"><button class="go" type="submit">Claim</button></form>
 <p class="ck" id="ck"></p></article><div class="nav"><button class="lk" id="pv">Previous bag</button><button class="lk" id="hn">Ask the clerk</button><button class="lk" id="nx">Next bag</button></div><footer class="footer"><span>Left Luggage · Lost Property Office</span><span>All claims are final</span></footer>`;
+setTheme(document.documentElement.dataset.theme||(dk()?'dark':'light'));
 const say=t=>{const c=$('#ck');c.textContent=t;c.style.animation='none';void c.offsetWidth;c.style.animation='fade .4s'},tg=$('#tg');
 const need=()=>miss.length?(say('Claim bag '+miss.join(', ')+' first, then come back.'),1):0;
 if(i in S.a){tg.classList.add('ok');say('Already claimed. Inside: '+BAGS[i])}else{say('The clerk waits.');need()}
