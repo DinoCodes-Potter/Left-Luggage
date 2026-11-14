@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dinocodes-potter.github.io/Left-Luggage/sitemap.xml
