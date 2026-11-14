@@ -14,15 +14,25 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Stardos+Stencil:wght@400;700&display=swap">
 <style>
 :root{--bg:#14302a;--fg:#efe6d0;--mut:#9fb3a5;--tag:#e8dbb5;--ink:#241f17;--brass:#d3a64a;--red:#c2342b;--line:#1c3d35;--st:"Stardos Stencil",Impact,"Arial Black",sans-serif;--ty:"Courier Prime","Courier New",monospace;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#dfe5d4;--fg:#1d2a22;--mut:#55675b;--tag:#f1e7c9;--brass:#8c6410;--red:#b3261e;--line:#cdd7c0}}
+@media(prefers-color-scheme:light){:root:not([data-theme]){--bg:#dfe5d4;--fg:#1d2a22;--mut:#55675b;--tag:#f1e7c9;--brass:#8c6410;--red:#b3261e;--line:#cdd7c0}}
 :root[data-theme=light]{--bg:#dfe5d4;--fg:#1d2a22;--mut:#55675b;--tag:#f1e7c9;--brass:#8c6410;--red:#b3261e;--line:#cdd7c0}
 :root[data-theme=dark]{--bg:#14302a;--fg:#efe6d0;--mut:#9fb3a5;--tag:#e8dbb5;--brass:#d3a64a;--red:#c2342b;--line:#1c3d35}
+:root[data-theme=sepia]{--bg:#30251d;--fg:#f0dfbd;--mut:#b9a487;--tag:#ddc69b;--ink:#2b2118;--brass:#d19b48;--red:#a94432;--line:#49372a}
+:root[data-theme=signal]{--bg:#301d22;--fg:#f2e5d7;--mut:#c1a8a0;--tag:#f0d9bd;--ink:#2b1b1b;--brass:#e3ad55;--red:#e34b3e;--line:#4b2b30}
 *{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;min-height:100vh;background:var(--bg) repeating-linear-gradient(90deg,transparent 0 58px,var(--line) 58px 60px);color:var(--fg);font:17px/1.55 var(--ty)}
 #app{max-width:880px;margin:0 auto;padding:22px 18px 70px}
 h1{font:400 clamp(46px,13vw,104px)/.95 var(--st);color:var(--brass);margin:26px 0 14px}
 .sub{max-width:52ch;margin:0 0 10px}.cnt{color:var(--mut);margin:0 0 28px}
-.top{display:flex;justify-content:flex-end}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 8px;padding:10px 12px;border:1px solid var(--brass);background:color-mix(in srgb,var(--bg) 82%,var(--tag));box-shadow:inset 0 0 0 3px color-mix(in srgb,var(--brass) 12%,transparent)}
+.theme-label{font:700 11px var(--ty);letter-spacing:2px;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+.theme-options{display:flex;gap:6px;flex-wrap:wrap}
+.theme-choice{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border:1px solid var(--line);background:transparent;color:var(--fg);font:700 11px var(--ty);letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:background .18s,border-color .18s,transform .18s}
+.theme-choice:hover{border-color:var(--brass);transform:translateY(-1px)}
+.theme-choice[aria-pressed=true]{background:var(--tag);color:var(--ink);border-color:var(--brass);box-shadow:inset 0 -3px 0 var(--brass)}
+.theme-dot{width:10px;height:10px;flex:0 0 10px;border-radius:50%;border:1px solid currentColor;background:var(--dot)}
+.theme-choice:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+@media(max-width:560px){.top{align-items:flex-start;flex-direction:column}.theme-options{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.theme-choice{justify-content:flex-start}}
 button{font:inherit;color:inherit;cursor:pointer}
 .lk{background:none;border:0;border-bottom:1px solid var(--brass);color:var(--fg);padding:4px 0;margin:0 16px 0 0}
 .rack{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:26px 14px}
@@ -152,7 +162,7 @@ const nz=s=>s.toLowerCase().replace(/[^a-z0-9]/g,'');
 const $=s=>document.querySelector(s);
 let S={a:{}},T=[];try{S=JSON.parse(localStorage.getItem('lug1'))||S}catch(e){}
 const THEME_KEY='left-luggage-theme';
-try{const savedTheme=localStorage.getItem(THEME_KEY);if(savedTheme==='light'||savedTheme==='dark')document.documentElement.dataset.theme=savedTheme}catch(e){}
+try{const savedTheme=localStorage.getItem(THEME_KEY);if(['light','dark','sepia','signal'].includes(savedTheme))document.documentElement.dataset.theme=savedTheme}catch(e){}
 const save=()=>{try{localStorage.setItem('lug1',JSON.stringify(S))}catch(e){}};
 const ANS=[["375ny9"],["o9tccm"],["pikbki"],["2vcu68"],["1sy3wm5"],["zvhfg2"],["ujdxwi"],["1b4vdo8","45h"],[],["zxlcto"],["yizb3g"],["38fdu6"],["yj27hh"],["1oylfr0"],["fimsua"],["38pbiv"],["1ilfg78"],["2tx2k3"],["2wsujn"],[],[],["os7ylg","os8224"],["xcfk3t"],["t0dbvt"],["314khs"],["yj0601"],["382hut"],["pfcuuc"],["375k2p"],["sz2zcx"],["1xrbqnf"],["3hl43"],["vbkj44"],[],[],["p3aicz"],[],[],["26o5xl"],["yisk9w"],["alxbcm","b30j6t"],["33x7b0","29bu5k"],["wm54cf"],["u3ow04","bn9uwv"]];
 const P=[
@@ -219,10 +229,12 @@ const fx={
 32:()=>console.log('%cThe clerk mutters: the word is pewter.','font:16px monospace'),
 35:s=>s.innerHTML='<p class="mir">buckle</p>'};
 const dk=()=>{const t=document.documentElement.dataset.theme;return t?t==='dark':matchMedia('(prefers-color-scheme:dark)').matches};
-const setTheme=theme=>{document.documentElement.dataset.theme=theme;try{localStorage.setItem(THEME_KEY,theme)}catch(e){};const b=$('#th');if(b){b.textContent=theme==='dark'?'Day mode':'Night mode';b.setAttribute('aria-label',theme==='dark'?'Switch to light theme':'Switch to dark theme');b.setAttribute('aria-pressed',String(theme==='dark'))}};
+const setTheme=theme=>{if(!['light','dark','sepia','signal'].includes(theme))return;document.documentElement.dataset.theme=theme;try{localStorage.setItem(THEME_KEY,theme)}catch(e){};document.querySelectorAll('.theme-choice').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===theme)))};
+const themeBar=()=>`<div class="top" role="group" aria-label="Choose a colour theme"><span class="theme-label">Counter lighting</span><div class="theme-options"><button type="button" class="theme-choice" data-theme-choice="dark" aria-pressed="false"><i class="theme-dot" style="--dot:#14302a"></i>Night shift</button><button type="button" class="theme-choice" data-theme-choice="light" aria-pressed="false"><i class="theme-dot" style="--dot:#dfe5d4"></i>Day shift</button><button type="button" class="theme-choice" data-theme-choice="sepia" aria-pressed="false"><i class="theme-dot" style="--dot:#8b6845"></i>Archive</button><button type="button" class="theme-choice" data-theme-choice="signal" aria-pressed="false"><i class="theme-dot" style="--dot:#9f3935"></i>Signal room</button></div></div>`;
+document.addEventListener('click',e=>{const b=e.target.closest('.theme-choice');if(b)setTheme(b.dataset.themeChoice)});
 const clr=()=>{T.forEach(clearTimeout);T=[]};
 function home(){clr();const n=Object.keys(S.a).length,N=P.length;
-$('#app').innerHTML=`<div class="top"><button type="button" class="lk" id="th" aria-label="Switch colour theme">Night mode</button></div><h1>${LT('LEFT',0)}<br>${LT('LUGGAGE',4)}</h1>
+$('#app').innerHTML=`${themeBar()}<h1>${LT('LEFT',0)}<br>${LT('LUGGAGE',4)}</h1>
 <p class="sub">Nobody has collected these bags in years. Each tag wants one word. The answer isn’t always written on the tag, so look around the counter and ask the page awkward questions.</p>
 <p class="cnt">${n} of ${N} bags claimed${n==N?'. The rack is empty. The clerk locks up and, for once, smiles.':''}</p>
 <div class="rack" id="rack">${P.map((_,i)=>`<button class="t${i in S.a?' d':''}" style="--r:${(i*37%7-3)*.9}deg;--i:${i}" data-i="${i}" aria-label="Bag ${i+1}${i in S.a?', claimed':''}"${i in S.a?` title='${BAGS[i]}'`:''}><b>${String(i+1).padStart(2,'0')}</b></button>`).join('')}</div>
@@ -265,11 +277,10 @@ $('#app').innerHTML=`<div class="top"><button type="button" class="lk" id="th" a
 <h3>Changes</h3><p>These terms may be updated when the project changes. Continued use after an update means you are using the current version.</p></section>
 <nav class="page-links" aria-label="Site information"><a href="#about">About</a><a href="#experience">Explore</a><a href="#proof">Project facts</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#privacy">Privacy</a><a href="#terms">Terms</a><a href="sitemap.xml">XML sitemap</a><a href="https://github.com/DinoCodes-Potter/Left-Luggage">GitHub</a></nav>
 <footer class="footer"><span>Left Luggage · Lost Property Office</span><span>Est. before anyone could say</span></footer>`;
-setTheme(dk()?'dark':'light');
-$('#th').onclick=()=>setTheme(dk()?'light':'dark');
+setTheme(document.documentElement.dataset.theme||(dk()?'dark':'light'));
 document.querySelectorAll('.t').forEach(b=>b.onclick=()=>open(+b.dataset.i))}
 function open(i){clr();const N=P.length,miss=(NEED[i]||[]).filter(k=>S.a[k]==null).map(k=>k+1);
-$('#app').innerHTML=`<button class="lk" id="bk">Back to the rack</button><article class="big" id="tg"><div class="no" data-i="${i}">Bag ${i+1}</div><small class="own">${OW(i)}</small><div id="pr">${P[i]}</div><div id="st"></div>
+$('#app').innerHTML=`${themeBar()}<button class="lk" id="bk">Back to the rack</button><article class="big" id="tg"><div class="no" data-i="${i}">Bag ${i+1}</div><small class="own">${OW(i)}</small><div id="pr">${P[i]}</div><div id="st"></div>
 <form id="f"><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer" placeholder="write the word here"><button class="go" type="submit">Claim</button></form>
 <p class="ck" id="ck"></p></article><div class="nav"><button class="lk" id="pv">Previous bag</button><button class="lk" id="hn">Ask the clerk</button><button class="lk" id="nx">Next bag</button></div><footer class="footer"><span>Left Luggage · Lost Property Office</span><span>All claims are final</span></footer>`;
 const say=t=>{const c=$('#ck');c.textContent=t;c.style.animation='none';void c.offsetWidth;c.style.animation='fade .4s'},tg=$('#tg');
