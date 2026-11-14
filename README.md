@@ -1,5 +1,8 @@
 # Left Luggage
 
+<pre></pre>
+<p align="center"><a href="https://dinocodes-potter.github.io/Left-Luggage/"><strong>🌐 OPEN LEFT LUGGAGE — PLAY THE LIVE WEBSITE</strong></a></p>
+
 **A peculiar little lost-property office. Forty-four unclaimed bags. Forty-four tags. A lot more going on than meets the eye.**
 
 Left Luggage is a browser-based puzzle experience built around an old-fashioned railway lost-property counter. Each luggage tag presents a small challenge: some are word puzzles, some require a closer look at the page, and a few ask you to interact with the browser itself.
@@ -8,7 +11,7 @@ The visual identity is deliberately tactile and archival: deep station-green, ag
 
 ## Play
 
-Open [`index.html`](index.html) in a modern browser, or publish the repository with GitHub Pages. There is no build step, package manager or server-side dependency.
+**[Open the website](https://dinocodes-potter.github.io/Left-Luggage/)** or open [`index.html`](index.html) locally in a modern browser. There is no build step, package manager or server-side dependency.
 
 ## Features
 
