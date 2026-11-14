@@ -123,6 +123,25 @@ input.bad{animation:bd .6s;border-bottom-color:var(--red)}@keyframes bd{20%{back
 @keyframes hm{0%{transform:translate(-18px,-46px) rotate(-75deg);opacity:0}35%{opacity:1}65%{transform:translate(-14px,-24px) rotate(8deg)}100%{transform:translate(-14px,-24px) rotate(8deg);opacity:0}}
 @media(prefers-reduced-motion:reduce){.fell{visibility:hidden}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* Public-facing information panels */
+.info{margin:54px 0 0;padding-top:26px;border-top:1px solid var(--brass)}
+.info h2{font:400 clamp(28px,6vw,42px)/1.05 var(--st);color:var(--brass);margin:0 0 12px}
+.info h3{font:700 19px var(--ty);color:var(--brass);margin:20px 0 6px}
+.info p,.info li{max-width:72ch}
+.info a{color:var(--brass);text-underline-offset:4px}
+.cta{margin:34px 0 20px;padding:22px;background:var(--tag);color:var(--ink);text-align:center;clip-path:polygon(3% 0,97% 0,100% 8%,100% 100%,0 100%,0 8%)}
+.cta h2{font:400 clamp(30px,7vw,48px) var(--st);margin:0 0 8px;color:var(--ink)}
+.cta p{margin:0 auto 14px}
+.cta a{display:inline-block;background:var(--ink);color:var(--tag);padding:10px 18px;text-decoration:none;font-weight:700;border:2px solid var(--brass)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:18px 0}
+.tile{border:1px solid var(--brass);padding:14px;background:color-mix(in srgb,var(--bg) 86%,var(--tag))}
+.tile strong{display:block;color:var(--brass);font:400 23px var(--st);margin-bottom:6px}
+.info details{border-bottom:1px dashed var(--brass);padding:12px 0}
+.info summary{cursor:pointer;color:var(--fg);font-weight:700}
+.smallprint{font-size:13px;color:var(--mut)}
+.page-links{display:flex;flex-wrap:wrap;gap:10px 18px;margin:20px 0}
+.page-links a{font-size:13px;letter-spacing:.06em;text-transform:uppercase}
 </style></head><body><main id="app" aria-label="Left Luggage puzzle office" aria-live="polite"></main>
 <script>
 const h=t=>{let x=5381;for(const c of t)x=(x*33^c.charCodeAt(0))>>>0;return x.toString(36)};
@@ -203,7 +222,45 @@ function home(){clr();const n=Object.keys(S.a).length,N=P.length;
 $('#app').innerHTML=`<div class="top"><button type="button" class="lk" id="th" aria-label="Switch colour theme">Night mode</button></div><h1>${LT('LEFT',0)}<br>${LT('LUGGAGE',4)}</h1>
 <p class="sub">Nobody has collected these bags in years. Each tag wants one word. The answer isn’t always written on the tag, so look around the counter and ask the page awkward questions.</p>
 <p class="cnt">${n} of ${N} bags claimed${n==N?'. The rack is empty. The clerk locks up and, for once, smiles.':''}</p>
-<div class="rack">${P.map((_,i)=>`<button class="t${i in S.a?' d':''}" style="--r:${(i*37%7-3)*.9}deg;--i:${i}" data-i="${i}" aria-label="Bag ${i+1}${i in S.a?', claimed':''}"${i in S.a?` title='${BAGS[i]}'`:''}><b>${String(i+1).padStart(2,'0')}</b></button>`).join('')}</div>
+<div class="rack" id="rack">${P.map((_,i)=>`<button class="t${i in S.a?' d':''}" style="--r:${(i*37%7-3)*.9}deg;--i:${i}" data-i="${i}" aria-label="Bag ${i+1}${i in S.a?', claimed':''}"${i in S.a?` title='${BAGS[i]}'`:''}><b>${String(i+1).padStart(2,'0')}</b></button>`).join('')}</div>
+<section class="cta" aria-labelledby="cta-title"><h2 id="cta-title">Your claim is waiting.</h2><p>Forty-four tags. One peculiar office. Start with any bag and see where the clues lead.</p><a href="#rack" id="start-claiming">ENTER THE RACK</a></section>
+<section class="info" id="about"><h2>About the office</h2><p>Left Luggage is a self-contained browser puzzle experience inspired by an old railway lost-property counter. Explore 44 numbered bags, solve their clues and uncover the odd objects the clerk has kept on the shelves. It is a small independent web project, built to be played directly in your browser.</p></section>
+<section class="info" id="experience"><h2>What you can do here</h2><div class="tiles">
+<div class="tile"><strong>44 bag puzzles</strong><p>Riddles, wordplay, hidden clues and little browser experiments.</p></div>
+<div class="tile"><strong>Clerk hints</strong><p>Ask for a nudge when a tag has you stumped.</p></div>
+<div class="tile"><strong>Two themes</strong><p>Switch between day and night colour schemes.</p></div>
+<div class="tile"><strong>Your own pace</strong><p>Progress is saved locally in this browser. No account required.</p></div>
+</div><p class="smallprint">There are no physical products for sale, paid plans, subscriptions or booking services on this site. The “showcase” is the free interactive experience itself.</p></section>
+<section class="info" id="proof"><h2>From the ledger</h2><div class="tiles">
+<div class="tile"><strong>44</strong><p>Numbered bags to investigate.</p></div>
+<div class="tile"><strong>0</strong><p>Accounts or sign-ups required.</p></div>
+<div class="tile"><strong>Local</strong><p>Claim progress stays in your browser storage.</p></div>
+</div><p class="smallprint">These are verifiable features of the project, not customer ratings or testimonials. We do not publish fabricated reviews, user counts or endorsements.</p></section>
+<section class="info" id="faq"><h2>Frequently asked questions</h2>
+<details><summary>How do I play?</summary><p>Select any numbered bag on the rack, read its tag and enter the answer. Some puzzles require you to inspect the page or interact with your browser. Use “Ask the clerk” for a hint.</p></details>
+<details><summary>How many puzzles are there?</summary><p>There are 44 bags to claim.</p></details>
+<details><summary>Is it free?</summary><p>Yes. The experience is free to play and does not require an account or payment.</p></details>
+<details><summary>Does my progress carry between devices?</summary><p>No. Progress is saved in local browser storage on the device and browser you use. It does not sync to an account.</p></details>
+<details><summary>Can I reset my progress?</summary><p>Clear this site's local storage in your browser settings to reset claimed bags and saved preferences.</p></details>
+<details><summary>Does the site sell anything?</summary><p>No. There are no physical goods, subscriptions or paid services offered here.</p></details>
+<details><summary>Is the connection secure?</summary><p>The site is intended to be served over HTTPS using GitHub Pages. Use the HTTPS address shown below; if your browser does not show a secure connection, do not enter personal information.</p></details>
+</section>
+<section class="info" id="contact"><h2>Contact & project links</h2><p>Found a bug, spotted a broken clue or have feedback? The public project repository is the contact point for this site.</p><p><a href="https://github.com/DinoCodes-Potter/Left-Luggage/issues" target="_blank" rel="noopener noreferrer">Report an issue or send feedback on GitHub</a></p><p><a href="https://github.com/DinoCodes-Potter/Left-Luggage" target="_blank" rel="noopener noreferrer">View the source repository</a></p><p class="smallprint">No public email address or social-media account is currently listed for this project. We have not invented one.</p></section>
+<section class="info" id="privacy"><h2>Privacy policy</h2><p><strong>Last updated: 14 November 2026</strong></p>
+<h3>Information this site stores</h3><p>Left Luggage stores puzzle answers/claimed-bag progress under the browser storage key <code>lug1</code> and the selected colour theme under <code>left-luggage-theme</code>. This information remains in your browser's local storage and is not sent to a Left Luggage application server.</p>
+<h3>Accounts and contact forms</h3><p>This site does not provide account registration, a newsletter or an on-site contact form. If you contact the project through GitHub, GitHub processes that interaction under its own privacy terms.</p>
+<h3>Third-party services</h3><p>The page loads typefaces from Google Fonts. Your browser may connect to Google's servers to retrieve those font files; Google's own policies govern that service. GitHub Pages hosts the website and may process standard hosting and security logs under GitHub's policies.</p>
+<h3>Your choices</h3><p>You can clear this site's local storage through your browser settings. This removes saved progress and theme preferences. You can also use browser controls or extensions to limit third-party requests, though the page may then use system fonts.</p>
+<h3>Children and sensitive information</h3><p>Do not enter personal, financial, health or other sensitive information into puzzle answers. The answer field is for puzzle responses only.</p>
+<h3>Policy changes</h3><p>If the site's data practices change, this policy should be updated before the change takes effect.</p></section>
+<section class="info" id="terms"><h2>Terms of use</h2><p><strong>Last updated: 14 November 2026</strong></p>
+<h3>Using the experience</h3><p>You may access and play Left Luggage for personal, non-commercial entertainment. Please do not attempt to disrupt the site, abuse GitHub services or use the page to submit unlawful or harmful content.</p>
+<h3>Availability</h3><p>The experience is provided as-is. Features, puzzles and hosting may change, be interrupted or become unavailable. We do not promise uninterrupted access or permanent storage of progress.</p>
+<h3>Intellectual property</h3><p>Unless otherwise stated, the site's original puzzle text, visual design and code are part of the Left Luggage project. Do not republish the project as your own or imply endorsement by its creator.</p>
+<h3>External services</h3><p>Links to GitHub and Google Fonts lead to third-party services. Their terms and privacy policies apply when you use them.</p>
+<h3>Disclaimer</h3><p>The site is an entertainment project. It is not a professional, financial, legal or safety service. To the extent permitted by applicable law, the project is provided without warranties.</p>
+<h3>Changes</h3><p>These terms may be updated when the project changes. Continued use after an update means you are using the current version.</p></section>
+<nav class="page-links" aria-label="Site information"><a href="#about">About</a><a href="#experience">Explore</a><a href="#proof">Project facts</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#privacy">Privacy</a><a href="#terms">Terms</a><a href="sitemap.xml">XML sitemap</a><a href="https://github.com/DinoCodes-Potter/Left-Luggage">GitHub</a></nav>
 <footer class="footer"><span>Left Luggage · Lost Property Office</span><span>Est. before anyone could say</span></footer>`;
 setTheme(dk()?'dark':'light');
 $('#th').onclick=()=>setTheme(dk()?'light':'dark');
