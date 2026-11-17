@@ -1,9 +1,9 @@
 # Left Luggage
 
 <pre></pre>
-<p align="center"><a href="https://dinocodes-potter.github.io/Left-Luggage/"><strong>🌐 OPEN LEFT LUGGAGE — PLAY THE LIVE WEBSITE</strong></a></p>
+<p align="center"><a href="https://dinocodes-potter.github.io/Left-Luggage/"><strong> OPEN LEFT LUGGAGE — PLAY THE LIVE WEBSITE</strong></a></p>
 
-**A peculiar little lost-property office. Forty-four unclaimed bags. Forty-four tags. A lot more going on than meets the eye.**
+**A peculiar little lost-property office. One Hundred Forty-four unclaimed bags. One Hundred Forty-four tags. A lot more going on than meets the eye.**
 
 Left Luggage is a browser-based puzzle experience built around an old-fashioned railway lost-property counter. Each luggage tag presents a small challenge: some are word puzzles, some require a closer look at the page, and a few ask you to interact with the browser itself.
 
